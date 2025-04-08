@@ -27,6 +27,7 @@ origins = [
 
     "http://localhost",
     "http://localhost:3000",
+    "http://142.93.189.176:3000"
 ]
 
 
