@@ -50,7 +50,7 @@ export default function Home() {
         fetchFavorites();
     }, []);
 
-    const isFavorite = (movie) => 
+    const isFavorite = (movie) =>
         favorites.some((f) => f.movie_id === movie.id);
     return (
         <>
@@ -63,6 +63,29 @@ export default function Home() {
                     Welcome back, <span className="text-accent">{username}</span>!
                 </h2>
             )}
+            <div className="mt-4 mb-6 flex items-center justify-end gap-2 text-sm">
+                <button
+                    onClick={() => setPage((p) => Math.max(p - 1, 1))}
+                    className="px-3 py-1.5 bg-secondary text-white rounded hover:bg-secondary/80 transition disabled:opacity-40 disabled:cursor-not-allowed"
+                    disabled={page === 1}
+                >
+                    ←
+                </button>
+
+                <span className="text-primary font-medium px-2">
+                    Page {page} of {totalPages}
+                </span>
+
+                <button
+                    onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
+                    className="px-3 py-1.5 bg-secondary text-white rounded hover:bg-secondary/80 transition disabled:opacity-40 disabled:cursor-not-allowed"
+                    disabled={page === totalPages}
+                >
+                    →
+                </button>
+            </div>
+
+
             {loading ? (
                 <div className="flex justify-center py-20">
                     <div className="w-12 h-12 border-4 border-secondary border-t-transparent rounded-full animate-spin" />
@@ -82,23 +105,28 @@ export default function Home() {
                 </div>
             )}
 
-            <div className="mt-8 flex justify-center gap-4">
+            <div className="mt-10 flex justify-center items-center gap-4">
                 <button
                     onClick={() => setPage((p) => Math.max(p - 1, 1))}
-                    className="px-4 py-2 bg-secondary text-white rounded disabled:opacity-50"
+                    className="px-4 py-2 bg-secondary text-white font-medium rounded-md hover:bg-secondary/80 transition disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={page === 1}
                 >
                     ← Previous
                 </button>
-                <span className="text-lg font-medium">Page {page}</span>
+
+                <span className="text-base font-medium text-primary bg-secondary/20 px-3 py-1 rounded-md">
+                    Page {page} of {totalPages}
+                </span>
+
                 <button
                     onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
-                    className="px-4 py-2 bg-secondary text-white rounded disabled:opacity-50"
+                    className="px-4 py-2 bg-secondary text-white font-medium rounded-md hover:bg-secondary/80 transition disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={page === totalPages}
                 >
                     Next →
                 </button>
             </div>
+
         </>
     );
 }

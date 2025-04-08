@@ -26,6 +26,7 @@ export default function MovieCard({ movie, isFavorite, onToggleFavorite }) {
       <AnimatedModal showModal={showModal}
         vote_average={vote_average}
         overview={overview}
+        movie={movie}
         poster_path={poster_path}
         toggleModal={toggleModal}
         onToggleFavorite={onToggleFavorite}
