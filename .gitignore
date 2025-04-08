@@ -2,7 +2,6 @@
 
 # dependencies
 frontend/themovies/node_modules
-frontend/themovies/public
 frontend/.pnp
 .pnp.js
 
