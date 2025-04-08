@@ -81,6 +81,26 @@ async def get_movies(page: int = Query(1, ge=1)):
 
     return {"results": paginated, "page": page, "total": total_results}
 
+@app.get("/api/movies/all")
+async def get_all_movies():
+    total_results = 45
+    all_results = []
+    pages_needed = (total_results // 20) + 1
+
+    async with httpx.AsyncClient() as client:
+        for tmdb_page in range(1, pages_needed + 1):
+            response = await client.get(
+                f"https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc",
+                params={"api_key": TMDB_API_KEY, "page": tmdb_page}
+            )
+            data = response.json()
+            all_results.extend(data["results"])
+
+            if len(all_results) >= total_results:
+                break
+
+    return {"results": all_results[:total_results]} 
+
 @app.get("/api/favorites")
 async def get_favorites(user_id: str):
     conn = sqlite3.connect("data/themovies.db")

@@ -15,6 +15,7 @@ export default function Login() {
     localStorage.setItem("username", username.trim());
 
     navigate("/");
+    window.location.reload();
   };
 
   return (
@@ -26,7 +27,7 @@ export default function Login() {
           placeholder="Enter your username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="w-full px-4 py-2 rounded border border-secondary focus:outline-none focus:ring-2 focus:ring-accent"
+          className="w-full px-4 py-2 rounded border border-secondary focus:outline-none focus:ring-2 text-primary focus:ring-accent"
         />
         <button
           type="submit"

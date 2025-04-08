@@ -8,9 +8,6 @@ export default function Contact() {
   
         <ul className="space-y-3 text-base text-primary dark:text-light text-left sm:text-center">
           <li>
-            <strong>📍 Location:</strong> South Africa
-          </li>
-          <li>
             <strong>📞 Phone:</strong>{" "}
             <a
               href="tel:+27833892171"

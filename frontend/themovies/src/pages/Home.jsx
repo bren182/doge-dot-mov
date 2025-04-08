@@ -5,6 +5,7 @@ import { getUserId } from '../utils/getUserId';
 
 export default function Home() {
     const username = localStorage.getItem("username");
+    const userId = getUserId();
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(() => {
         const savedPage = parseInt(localStorage.getItem("lastPage"));
@@ -13,7 +14,6 @@ export default function Home() {
     const [totalPages, setTotalPages] = useState(5);
     const [loading, setLoading] = useState(false);
     const [favorites, setFavorites] = useState([])
-    const userId = getUserId();
     const fetchMovies = async (page = 1) => {
         try {
             setLoading(true);
@@ -50,15 +50,19 @@ export default function Home() {
         fetchFavorites();
     }, []);
 
-    const isFavorite = (movie) =>
+    const isFavorite = (movie) => 
         favorites.some((f) => f.movie_id === movie.id);
     return (
         <>
-        {username && (
-  <h2 className="text-xl font-semibold mb-4 text-center">
-    Welcome back, <span className="text-accent">{username}</span>!
-  </h2>
-)}
+            {!userId ? (
+                <div className="text-center text-secondary text-lg mb-8">
+                    🔒 Please <a href="/login" className="text-accent underline">log in</a> to browse and save your favorite movies.
+                </div>
+            ) : (
+                <h2 className="text-xl font-semibold mb-4 text-center">
+                    Welcome back, <span className="text-accent">{username}</span>!
+                </h2>
+            )}
             {loading ? (
                 <div className="flex justify-center py-20">
                     <div className="w-12 h-12 border-4 border-secondary border-t-transparent rounded-full animate-spin" />
