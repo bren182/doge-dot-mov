@@ -51,4 +51,8 @@ Launch the application by using docker.
 docker-compose up --build
 ```
 
+## 📡 API Attribution
 
+This project uses the [TMDB API](https://www.themoviedb.org/) for movie data and images.
+
+> This project uses the TMDB API but is not endorsed or certified by TMDB.
