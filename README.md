@@ -12,7 +12,7 @@ A lightweight full-stack movie browsing web app built with modern tools like **R
 2. Run docker-compose up --build
 3. Visit http://localhost:3000 for the frontend; Backend runs on http://localhost:8000
 
-## 🧠 Tech Stack Overview and rationale
+## 🧠 Tech Stack Overview and Rationale
 
 ### Rationale 
 
