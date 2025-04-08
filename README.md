@@ -6,7 +6,9 @@ A lightweight full-stack movie browsing web app built with modern tools like **R
 
 # 🚀 Getting Started
 
-> Please make sure you have installed Docker on your machine and that the Docker application is running
+>
+> Please make sure you have [installed Docker](https://docs.docker.com/engine/install/) on your machine and that the Docker application is running
+>
 
 1. Clone the repo
 2. Run `docker-compose up --build` in the `doge-dot-mov` directory (root). 
@@ -45,7 +47,9 @@ This setup highlights core concepts like API-driven CRUD operations (insert, del
 
 Launch the application by using docker. Run `docker-compose up --build` in the `doge-dot-mov` directory (root).
 
-> Please make sure you have installed Docker on your machine and that the Docker application is running
+>
+> Please make sure you have [installed Docker](https://docs.docker.com/engine/install/) on your machine and that the Docker application is running
+>
 
 ```bash
 docker-compose up --build
