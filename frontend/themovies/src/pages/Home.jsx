@@ -72,7 +72,7 @@ export default function Home() {
                     ←
                 </button>
 
-                <span className="text-primary font-medium px-2">
+                <span className="text-primary font-medium px-2 bg-secondary/20 px-3 py-1 rounded-md">
                     Page {page} of {totalPages}
                 </span>
 
