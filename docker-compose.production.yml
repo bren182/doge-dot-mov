@@ -1,0 +1,21 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_API_URL: ${REACT_APP_API_URL}
+    ports:
+      - "80:3000"
+    env_file:
+      - ./frontend/themovies/.env.production
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/backend
+      - ./backend/data:/backend/data
+    environment:
+      - DATABASE_URL=sqlite:///./data/themovies.db

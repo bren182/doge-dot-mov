@@ -2,12 +2,16 @@ FROM node:16-alpine
 
 WORKDIR /themovies
 
-COPY themovies/package*.json ./
+ARG REACT_APP_API_URL
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
 
+COPY themovies/package*.json ./
 RUN npm install
 
-COPY themovies/ .
+COPY themovies/ ./
 
+RUN npm run build
+
+RUN npm install -g serve
 EXPOSE 3000
-
-CMD ["npm", "start"]
+CMD ["serve", "-s", "build", "-l", "3000"]

@@ -1,0 +1,1 @@
+docker-compose --env-file frontend/themovies/.env.development up --build

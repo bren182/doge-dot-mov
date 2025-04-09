@@ -1,6 +1,9 @@
 services:
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      args:
+        REACT_APP_API_URL: ${REACT_APP_API_URL}
     ports:
       - "3000:3000"
     volumes:
@@ -8,6 +11,8 @@ services:
       - /node_modules
     stdin_open: true
     tty: true
+    env_file:
+      - ./frontend/themovies/.env.development
     environment:
       - CHOKIDAR_USEPOLLING=true
     depends_on:
