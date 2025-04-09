@@ -17,7 +17,7 @@ export default function Home() {
     const fetchMovies = async (page = 1) => {
         try {
             setLoading(true);
-            const res = await fetch(`http://localhost:8000/api/movies?page=${page}`);
+            const res = await fetch(`http://${process.env.REACT_APP_API_URL}/api/movies?page=${page}`);
             const data = await res.json();
             setMovies(data.results);
             setPage(data.page);
@@ -36,7 +36,7 @@ export default function Home() {
 
     const fetchFavorites = async () => {
         try {
-            const res = await fetch(`http://localhost:8000/api/favorites?user_id=${userId}`);
+            const res = await fetch(`http://${process.env.REACT_APP_API_URL}/api/favorites?user_id=${userId}`);
             const data = await res.json();
             setFavorites(data.favorites);
         } catch (err) {

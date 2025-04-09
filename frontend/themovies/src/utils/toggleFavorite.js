@@ -1,5 +1,5 @@
 const toggleFavorite = async (movie, isCurrentlyFavorite, userId, refreshFavorites) => {
-    const endpoint = "http://localhost:8000/api/favorites";
+    const endpoint = `http://${process.env.REACT_APP_API_URL}/api/favorites`;
     const method = isCurrentlyFavorite ? "DELETE" : "POST";
   
     try {

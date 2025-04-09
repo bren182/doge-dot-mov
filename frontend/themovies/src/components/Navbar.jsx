@@ -35,7 +35,7 @@ export default function Navbar() {
     }
 
     try {
-      const res = await fetch(`http://localhost:8000/api/movies/all`);
+      const res = await fetch(`http://${process.env.REACT_APP_API_URL}/api/movies/all`);
       const data = await res.json();
       const filtered = data.results.filter((movie) =>
         movie.title.toLowerCase().includes(value.toLowerCase())
