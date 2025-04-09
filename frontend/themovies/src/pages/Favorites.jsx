@@ -11,7 +11,7 @@ export default function Favorites() {
   const userId = localStorage.getItem("user_id");
   async function fetchFavorites() {
     try {
-      const res = await fetch(`http://localhost:8000/api/favorites?user_id=${userId}`);
+      const res = await fetch(`http://${process.env.REACT_APP_API_URL}/api/favorites?user_id=${userId}`);
       const data = await res.json();
       setFavorites(data.favorites);
     } catch (err) {
